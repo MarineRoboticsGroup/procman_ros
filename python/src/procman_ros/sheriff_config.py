@@ -177,7 +177,7 @@ class CommandNode:
         s = "    " * indent
         lines = []
         command_id = self.attributes["command_id"]
-        lines.append(s + 'cmd "{}" {'.format(escape_str(command_id)))
+        lines.append(s + 'cmd "{}" {{'.format(escape_str(command_id)))
         pairs = list(self.attributes.items())
         pairs.sort()
         for key, val in pairs:
@@ -239,7 +239,7 @@ class GroupNode:
             val = val + "\n".join(
                 [cmd.to_config_string(indent + 1) for cmd in self.commands]
             )
-            val = val + "\n{}}\n".format(s)
+            val = val + "\n{}}}\n".format(s)
         return val
 
     def __str__(self):
